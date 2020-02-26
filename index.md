@@ -2,8 +2,7 @@ Hello and welcome to this blog. Data sciencey, general stuff.  Links are created
 
 
 
-![Image of fast.ai logo](images/logo.png)
 
-## This is a title
+## My Blog y'all. Best time to start was ages ago. Next best time is now.
 
 
