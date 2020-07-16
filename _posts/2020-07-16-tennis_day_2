@@ -1,0 +1,19 @@
+# Tennis log
+
+Goals for today :
+
+1. Map out errors for shot type
+2. Write and test rules to correct all bugs
+
+Other ideas I've thought of, could we train a classifier on the last ball graphs to identify outcome/ multiple shots?
+Not going to have a huge amount of samples for that, also would need to train it on ones from outside for it to be fair. 
+
+How long would it take to get samples and label them for all points? Maybe not that long. 
+
+Fixed a couple of bugs kind of, some will just be hard to do - will need to use context which is not ideal but fine.
+
+Last big one to fix is missing overlaps and only detecting ones where they are missing. 
+
+Promising, cross referencing audio hits with overlaps and ball location should be able to clear up a few more errors, only 23 to go.
+
+First thing tomorrow - clean up point 66, getting muddled with the serving end and serve_outcome.
