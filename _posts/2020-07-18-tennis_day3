@@ -1,0 +1,32 @@
+# Ideas
+
+I need a method that is going to detect every hit with a lot of false positives.
+
+Ball and player IOU might be the best method for that
+
+Ball/player/racquet could work if racquet detections were better maybe but may as well try ball and player to start with. 
+
+Test - make sure bp_iou shots are all higher than num_shots and aud num_shots.
+
+Still have issues with isolate player mechanism - good test is how similar the player counts are after each stage. 
+
+Another way it fails is by counting one box as two players. How to detect that? Duplicates?
+
+Try 0.25 and if player counts are too different then lower to 0.1/0.01
+
+How many bad outcomes are caused by this?
+
+Failure modes, missing enough that we lose the overlap, and lose track of the player. 
+Missing enough that box jumps to another player.
+
+How to fix that? Improve player detections(lower thresh?)
+
+How the fuck is player isolate actually working? How does it know? Broken it so have to rewrite anyway.
+
+Potential solve - redo all of the player dets with a far lower detection threshold. Use 0.8 for the initial player settings but then use a much lower threshold for 
+tracking/iou purposes.
+
+Broken badly - no idea how it was working so well before using the same audio_frame and getting the end wrong, or it didn't matter about that?
+
+Could potentially recreate with player_df confs >= 0.8
+And try the various combos of 0.01 / 0.25, 0.25 only, 0.25/0.25
