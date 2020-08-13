@@ -99,10 +99,10 @@ var queries = {
 	serve_direction:"all",
 	first_serve:"all",
 	serve_formation:"all",
-	shot_number:"all",
-	player:"all",
-	shot_type:"all",
-	shot_direction:"all"
+	shot_number:"",
+	player:"",
+	shot_type:"",
+	shot_direction:""
 };
 
 
@@ -128,7 +128,7 @@ function filterRow(element, property) {
 
 function filterRow2(element, property) {
 	
-		return (queries[property] === "all" || !element || queries[property] == element || element.includes(queries[property]))
+		return (queries[property] === "" || !element || queries[property] == element || element.includes(queries[property]))
 		}
 
 
