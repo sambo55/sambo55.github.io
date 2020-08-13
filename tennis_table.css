@@ -45,7 +45,7 @@
 
 #myTable {
   border-collapse: collapse;
-  width: 90%;
+  width: 100%;
   border: 10px solid #ddd;
   font-size: 12px;
   top: 15px;
@@ -63,11 +63,11 @@
 #myTable tr {
   border-bottom: 1px solid #ddd;
 }
- /*
+ 
 #myTable tr > *:nth-child(10) {
 	display:none;
 }
-*/
+
 
 #myTable tr.header, #myTable tr:hover {
   background-color: #f1f1f1;
