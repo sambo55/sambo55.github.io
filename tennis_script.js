@@ -109,7 +109,36 @@ let queries = {
 };
 
 
+let resetBtn = document.getElementById("clear_filter");
 
+resetBtn.addEventListener('click', resetQueries());
+
+function resetQueries() {
+	
+	resetBtn.onclick = function() {
+	queries.server="all";
+	queries.side="all";
+	queries.serve_direction="all";
+	queries.first_serve="all";
+	queries.serve_formation="all";
+	queries.shot_number="";
+	queries.player="";
+	queries.shot_type="";
+	queries.shot_direction="";
+	queries.winner="all";
+	queries.num_shots="all";	
+	console.log(queries);
+	filterTable(queries);
+	let elements = document.getElementsByTagName('select');
+	let inputs = document.getElementsByTagName('input');
+	for(let i = 0; i < elements.length; i++) {
+		inputs[i].value =  "";
+	}
+	for(let i = 0; i < elements.length; i++){
+		elements[i].selectedIndex = 0;
+	}
+}
+}
 for ( let f of filters) {
 	
 	//console.log(f.id, f.value);
@@ -118,7 +147,7 @@ for ( let f of filters) {
 function updateQuery(f) {
 		f.onchange = function() {
 			
-			queries[f.id] = f.value;
+			queries[f.id] = f.value || f.data-name;
 			console.log(queries);
 			filterTable(queries);
 			countRows();
@@ -152,7 +181,7 @@ function countRows() {
 
 function filterRow(element, property) {
 	
-		return (queries[property] === "all" || !element || queries[property] == element.textContent || element.textContent.includes(queries[property]))
+		return (queries[property] === "all" || !element || queries[property] == element.textContent || element.textContent.includes(queries[property] || queries[property]) || queries[property].includes(element.textContent))
 		}
 
 function filterRow2(element, property) {
@@ -217,7 +246,7 @@ function filterTable(queries) {
 		
 		}
 
-        //)
+        
 		if (row.rowIndex == 0) {
 			row.style.display = "";
 		}

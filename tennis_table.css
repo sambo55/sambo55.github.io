@@ -16,7 +16,7 @@
   overflow: auto;
   height: 500px;
 }
-
+/*
 .fixed_header thead tr {
    display: block;
 }
@@ -38,17 +38,32 @@
 .video {
 	display:grid;
 	justify-items:center;
+	grid-area:header;
 	}
 
 .filter {
 	width:100px;
 }
+
+.table {
+
+	grid-area:footer;
+}
+
+.search_bar {
+
+	
+}
 #box-container {
 	height:500px;
 	display: grid;
-	grid-template-columns: 1fr 2fr;
-	justify-items:center;
-
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr;
+	justify-items:left;
+	grid-template-areas:
+		"header stats"
+		"footer footer";
+	align-items:center;
 }
 
 
@@ -59,7 +74,7 @@
   border: 10px solid #ddd;
   font-size: 12px;
   top: 15px;
-  overflow: auto;
+  overflow-y: scroll;
   height: 400px;
   display: block;
   text-transform: capitalize;
