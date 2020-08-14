@@ -46,8 +46,8 @@
 }
 
 .table {
-
-	grid-area:footer;
+    grid-area: footer;
+    
 }
 
 .search_bar {
@@ -59,31 +59,35 @@
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-template-rows: 1fr 1fr 1fr;
-	justify-items:left;
+	justify-items:center;
 	grid-template-areas:
-		"header stats"
+		"header header"
 		"footer footer";
 	align-items:center;
+    
 }
 
 
 
 #myTable {
-  border-collapse: collapse;
-  width: 100%;
-  border: 10px solid #ddd;
-  font-size: 12px;
-  top: 15px;
-  overflow-y: scroll;
-  height: 400px;
-  display: block;
-  text-transform: capitalize;
+    border-collapse: collapse;
+    width: 100%;
+    border: 10px solid #ddd;
+    font-size: 18px;
+    font-family: "Arial, Helvetica", sans-serif; top: 15px;
+    overflow-y: scroll;
+    height: 400px;
+    display: block;
+    text-transform: capitalize;
 }
 
-#myTable th, #myTable td {
-  text-align: left;
-  padding: 6px;
-}
+
+    #myTable th, #myTable td {
+        text-align: center;
+        padding: 6px;
+         
+        
+    }
 
 #myTable tr {
   border-bottom: 1px solid #ddd;
