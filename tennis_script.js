@@ -94,7 +94,7 @@ var filters = document.getElementsByClassName("filter");
 //console.log(filters[0].value);
 
 
-var queries = {
+let queries = {
 	server:"all",
 	side:"all",
 	serve_direction:"all",
@@ -119,7 +119,7 @@ function updateQuery(f) {
 		f.onchange = function() {
 			
 			queries[f.id] = f.value;
-			//console.log(queries);
+			console.log(queries);
 			filterTable(queries);
 			countRows();
 	};
@@ -146,8 +146,7 @@ function countRows() {
 			rowCount ++;
 		}
 		}
-		output.textContent = "Server wins: " + serveWins + "/" + rowCount;//, serveWins, returnWins);
-		return //console.log(rowCount, serveWins, returnWins)
+		output.textContent = "Server wins: " + serveWins + "/" + rowCount;
 }
 
 
@@ -185,6 +184,7 @@ function filterShots(shot_list) {
 	if (shot_list.textContent === "") {
 		match = false;
 	}
+	
 		return match
 }
 }
@@ -202,8 +202,13 @@ function filterTable(queries) {
 		
 		tds = row.getElementsByTagName("td");
 		
-		
-		if (filterRow(tds[1], "server")&&filterRow(tds[2],"side")&&filterRow(tds[3],"serve_direction") && filterRow(tds[4],"first_serve")&&filterRow(tds[7],"serve_formation")&&filterRow(tds[5],"winner") &&filterShots(tds[8])==true && filterRowShots(tds[6],"num_shots")) {
+		let match = filterShots(tds[8])
+		if (queries.shot_number === "" && queries.player === "" && 
+			queries.shot_type === "" && queries.shot_direction === "") {
+		match = true;
+		}
+		if (filterRow(tds[1], "server")&&filterRow(tds[2],"side")&&filterRow(tds[3],"serve_direction") && filterRow(tds[4],"first_serve")&&filterRow(tds[7],"serve_formation")&&filterRow(tds[5],"winner")
+&&filterRowShots(tds[6],"num_shots") && match==true){
 
 			row.style.display = "";
 		}
@@ -212,6 +217,7 @@ function filterTable(queries) {
 		
 		}
 
+        //)
 		if (row.rowIndex == 0) {
 			row.style.display = "";
 		}
