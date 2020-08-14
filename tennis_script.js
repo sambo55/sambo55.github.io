@@ -11,6 +11,7 @@ const set = [ 709.42,  717.5 ,  751.62,  780.98,  809.32,  820.72,  849.52,
 
 
 let aud = document.getElementsByTagName('stream')[0]
+aud.currentTime = 0;
 
 
 function closest(arr, closestTo){
@@ -117,7 +118,33 @@ function updateQuery(f) {
 			
 			queries[f.id] = f.value;
 			filterTable(queries);
+			countRows();
 	};
+}
+
+function countRows() {
+
+	let table = document.getElementById("myTable");
+    let rows = table.getElementsByTagName("tr");
+	let output = document.getElementById("stats");
+	let rowCount = 0;
+	let serveWins = 0;
+	let returnWins = 0;
+
+	for (let i = 1; i < rows.length; i++ ) {
+		console.log(rows[i].getElementsByTagName("td")[5].textContent);
+		if (rows[i].style.display == 'none') continue;
+		if (rows[i].getElementsByTagName("td")[5].textContent == "Returner") {
+			returnWins ++;
+			rowCount++;
+		}
+		if (rows[i].getElementsByTagName("td")[5].textContent == "Server") {
+			serveWins ++;
+			rowCount ++;
+		}
+		}
+		output.textContent = "Server wins: " + serveWins + "/" + rowCount;//, serveWins, returnWins);
+		return console.log(rowCount, serveWins, returnWins)
 }
 
 
@@ -133,14 +160,14 @@ function filterRow2(element, property) {
 
 
 function filterShots(shot_list) {
-		console.log("NEW");
+		//console.log("NEW");
 		match = false;
 		if (shot_list && shot_list.textContent.length > 1) {
 			let shot_array = shot_list.textContent.split("_");//
-			console.log(shot_array);
+			//console.log(shot_array);
 			for (let shot of shot_array) {
 				shot_list = shot.split(" ");
-				console.log(shot_list[1],shot_list[1].includes(queries["shot_type"]));
+				//console.log(shot_list[1],shot_list[1].includes(queries["shot_type"]));
 				if (filterRow2(shot_list[0], "shot_number") && filterRow2(shot_list[1],"shot_type") &&  filterRow2(shot_list[2],"player") && filterRow2(shot_list[3],"shot_direction")) {
 					match = true;
 				}

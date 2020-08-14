@@ -7,17 +7,24 @@
 
 </head>
 <body>
-<div id='box-container'>
+<div class='video' id='box-container'>
 	<div id='video_player'>
 <stream src="6ae9fc99453f30a9db61cbf30cd39b03" controls preload height="450px" width="800px"></stream>
 <script data-cfasync="2nd" defer type="text/javascript" src="https://embed.videodelivery.net/embed/r4xu.fla9.latest.js?video=6ae9fc99453f30a9db61cbf30cd39b03"></script>
+	</div>
+	<div class='btns' id = 'control_btns'>
 <button class='point_btn' id='prev_point'>Previous Point</button>
 <button class='point_btn' id='replay_point'>Replay Point</button>
 <button class='point_btn' id='next_point'>Next Point</button>
 	</div>
+<!--	</div>
 
 
-<div id = 'table_container'>
+<div id = 'table_container'>-->
+<div class='stats'>
+<output id='stats'></output>
+</div>
+<div class='table'>
 
 <table id='myTable' class='fixed_header' border="1" class="dataframe">
 <thead>
@@ -876,12 +883,14 @@
 </tr>
 </tbody>
 </table>
-
+</div>
+<div class = 'search_bar'>
 <input type="text" class="filter" id="shot_number" placeholder="Shot number...">
 <input type="text" class="filter" id="player" placeholder="Player...">
 <input type="text" class="filter" id="shot_type" placeholder="Shot type...">
 <input type="text" class="filter" id="shot_direction" placeholder="Shot direction...">
-
 </div>
+
+
 <script src="tennis_script.js"></script>
 </body>
