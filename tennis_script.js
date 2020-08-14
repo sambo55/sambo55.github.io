@@ -91,7 +91,7 @@ function prevPoint(set) {
 
 	
 var filters = document.getElementsByClassName("filter");
-console.log(filters[0].value);
+//console.log(filters[0].value);
 
 
 var queries = {
@@ -103,20 +103,23 @@ var queries = {
 	shot_number:"",
 	player:"",
 	shot_type:"",
-	shot_direction:""
+	shot_direction:"",
+	winner:"all",
+	num_shots:"all"
 };
 
 
 
 for ( let f of filters) {
 	
-	console.log(f.id, f.value);
+	//console.log(f.id, f.value);
 	f.addEventListener('change', updateQuery(f));
 }
 function updateQuery(f) {
 		f.onchange = function() {
 			
 			queries[f.id] = f.value;
+			//console.log(queries);
 			filterTable(queries);
 			countRows();
 	};
@@ -132,7 +135,7 @@ function countRows() {
 	let returnWins = 0;
 
 	for (let i = 1; i < rows.length; i++ ) {
-		console.log(rows[i].getElementsByTagName("td")[5].textContent);
+		//console.log(rows[i].getElementsByTagName("td")[5].textContent);
 		if (rows[i].style.display == 'none') continue;
 		if (rows[i].getElementsByTagName("td")[5].textContent == "Returner") {
 			returnWins ++;
@@ -144,7 +147,7 @@ function countRows() {
 		}
 		}
 		output.textContent = "Server wins: " + serveWins + "/" + rowCount;//, serveWins, returnWins);
-		return console.log(rowCount, serveWins, returnWins)
+		return //console.log(rowCount, serveWins, returnWins)
 }
 
 
@@ -154,17 +157,23 @@ function filterRow(element, property) {
 		}
 
 function filterRow2(element, property) {
-	
+		
 		return (queries[property] === "" || !element || queries[property] == element || element.includes(queries[property]))
 		}
 
+function filterRowShots(element, property) {
+		
+		return (queries[property] === "all" || !element || 
+element.textContent >= queries[property][0] && element.textContent <= queries[property][2]) 
+}
+
 
 function filterShots(shot_list) {
-		//console.log("NEW");
+		
 		match = false;
 		if (shot_list && shot_list.textContent.length > 1) {
 			let shot_array = shot_list.textContent.split("_");//
-			//console.log(shot_array);
+			
 			for (let shot of shot_array) {
 				shot_list = shot.split(" ");
 				//console.log(shot_list[1],shot_list[1].includes(queries["shot_type"]));
@@ -194,7 +203,7 @@ function filterTable(queries) {
 		tds = row.getElementsByTagName("td");
 		
 		
-		if (filterRow(tds[1], "server")&&filterRow(tds[2],"side")&&filterRow(tds[3],"serve_direction") && filterRow(tds[4],"first_serve")&&filterRow(tds[7],"serve_formation")&&filterShots(tds[8])==true) {
+		if (filterRow(tds[1], "server")&&filterRow(tds[2],"side")&&filterRow(tds[3],"serve_direction") && filterRow(tds[4],"first_serve")&&filterRow(tds[7],"serve_formation")&&filterRow(tds[5],"winner") &&filterShots(tds[8])==true && filterRowShots(tds[6],"num_shots")) {
 
 			row.style.display = "";
 		}

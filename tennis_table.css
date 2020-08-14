@@ -34,13 +34,23 @@
 }
 */
 
+
+.video {
+	display:grid;
+	justify-items:center;
+	}
+
+.filter {
+	width:100px;
+}
 #box-container {
 	height:500px;
-	display: flex;
-	flex-direction:row;
-	align-items:center;
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	justify-items:center;
 
 }
+
 
 
 #myTable {
@@ -72,3 +82,6 @@
 #myTable tr.header, #myTable tr:hover {
   background-color: #f1f1f1;
 }
+
+
+
